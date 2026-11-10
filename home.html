@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Caleb Football Hub</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #101820;
+            color: white;
+        }
+
+        header {
+            background: #008000;
+            padding: 25px 10px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+
+        nav {
+            background: #222;
+            padding: 15px 5px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 8px;
+            font-size: 14px;
+        }
+
+        .welcome {
+            text-align: center;
+            padding: 35px 15px;
+        }
+
+        .welcome h2 {
+            color: #00ff66;
+        }
+
+        .box {
+            background: #202c36;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .box h2 {
+            color: #00ff66;
+        }
+
+        .match {
+            background: #101820;
+            padding: 15px;
+            margin-top: 12px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .match h3 {
+            color: #00ff66;
+        }
+
+        .demo {
+            color: yellow;
+            font-size: 12px;
+        }
+
+        footer {
+            background: #008000;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>⚽ CALEB FOOTBALL HUB</h1>
+    <p>Your World of Football</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#scores">Scores</a>
+    <a href="#leagues">Leagues</a>
+    <a href="#news">News</a>
+</nav>
+
+<section class="welcome" id="home">
+    <h2>WELCOME TO CALEB FOOTBALL HUB</h2>
+    <p>Your home for football from around the world!</p>
+</section>
+
+<section class="box" id="scores">
+    <h2>⚽ FOOTBALL SCORES</h2>
+    <p>Sample match scores</p>
+
+    <div class="match">
+        <h3>🏴 Premier League</h3>
+        <p>Manchester United 2 - 1 Chelsea</p>
+        <span class="demo">DEMO SCORE</span>
+    </div>
+
+    <div class="match">
+        <h3>🇪🇸 La Liga</h3>
+        <p>Real Madrid 3 - 0 Barcelona</p>
+        <span class="demo">DEMO SCORE</span>
+    </div>
+
+    <div class="match">
+        <h3>🇮🇹 Serie A</h3>
+        <p>Inter Milan 1 - 1 Juventus</p>
+        <span class="demo">DEMO SCORE</span>
+    </div>
+</section>
+
+<section class="box" id="leagues">
+    <h2>🏆 FOOTBALL LEAGUES</h2>
+    <p>English Premier League</p>
+    <p>Spanish La Liga</p>
+    <p>Italian Serie A</p>
+    <p>German Bundesliga</p>
+    <p>French Ligue 1</p>
+    <p>Nigerian Premier Football League</p>
+</section>
+
+<section class="box" id="news">
+    <h2>📰 FOOTBALL NEWS</h2>
+    <p>Football news from around the world will appear here.</p>
+</s<section class="box" id="tables">
+
+    <h2>🏆 WORLD FOOTBALL LEAGUES</h2>
+
+    <h3>🏴 ENGLISH PREMIER LEAGUE</h3>
+
+    <div style="overflow-x:auto;">
+        <table border="1" width="100%" cellpadding="10">
+            <tr>
+                <th>Pos</th>
+                <th>Club</th>
+                <th>Pts</th>
+            </tr>
+            <tr><td>1</td><td>Team A</td><td>0</td></tr>
+            <tr><td>2</td><td>Team B</td><td>0</td></tr>
+            <tr><td>3</td><td>Team C</td><td>0</td></tr>
+            <tr><td>4</td><td>Team D</td><td>0</td></tr>
+            <tr><td>5</td><td>Team E</td><td>0</td></tr>
+        </table>
+    </div>
+
+    <h3>🇪🇸 SPANISH LA LIGA</h3>
+    <p>League table coming soon.</p>
+
+    <h3>🇮🇹 ITALIAN SERIE A</h3>
+    <p>League table coming soon.</p>
+
+    <h3>🇩🇪 GERMAN BUNDESLIGA</h3>
+    <p>League table coming soon.</p>
+
+    <h3>🇫🇷 FRENCH LIGUE 1</h3>
+    <p>League table coming soon.</p>
+
+    <h3>🇳🇬 NIGERIAN PREMIER FOOTBALL LEAGUE</h3>
+    <p>League table coming soon.</p>
+
+</section>
+
+  <section class="box" id="advertisement">
+    <h2>ADVERTISEMENT</h2>
+
+    <div style="
+        background:#101820;
+        padding:30px 10px;
+        text-align:center;
+        border:1px dashed #00ff66;
+        border-radius:10px;
+    ">
+        <p>Advertise With Caleb Football Hub</p>
+        <p>Your brand could appear here!</p>
+        <small>Advertising space</small>
+    </div>
+</section>
+<footer>
+    <p>© 2026 Caleb Football Hub</p>
+    <p>All Football. One Destination.</p>
+</footer>
+<div id="premier-league">
+  <h2>Premier League Table</h2>
+  <p id="loading">Loading table...</p>
+</div>
+
+<script>
+fetch("https://api.football-data.org/v4/competitions/PL/standings", {
+  headers: {
+    "X-Auth-Token": 
+})
+.then(response => response.json())
+.then(data => {
+  document.getElementById("loading").remove();
+
+  let table = data.standings[0].table;
+
+  document.getElementById("premier-league").innerHTML += `
+    <table border="1" cellpadding="8">
+      <tr><th>Pos</th><th>Club</th><th>Played</th><th>GD</th><th>Points</th></tr>
+      ${table.map(team => `
+        <tr>
+          <td>${team.position}</td>
+          <td>${team.team.name}</td>
+          <td>${team.playedGames}</td>
+          <td>${team.goalDifference}</td>
+          <td>${team.points}</td>
+        </tr>
+      `).join("")}
+    </table>`;
+})
+.catch(() => {
+  document.getElementById("loading").innerText = "Unable to load table.";
+});
+</script>
+  <section id="premier-league">
+    <h2>🏆 Premier League Table 2026/27</h2>
+
+    <p id="pl-status">Loading standings...</p>
+
+    <div style="overflow-x:auto">
+        <table style="width:100%; border-collapse:collapse; color:white;">
+            <thead>
+                <tr>
+                    <th>Pos</th>
+                    <th>Club</th>
+                    <th>P</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>GF</th>
+                    <th>GA</th>
+                    <th>GD</th>
+                    <th>Pts</th>
+                </tr>
+            </thead>
+            <tbody id="pl-table"></tbody>
+        </table>
+    </div>
+</section>
+
+<style>
+#premier-league {
+    background: #172a38;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 10px;
+}
+#premier-league th,
+#premier-league td {
+    padding: 10px 7px;
+    border-bottom: 1px solid #34495e;
+    text-align: center;
+    white-space: nowrap;
+}
+#premier-league th {
+    background: #087a42;
+}
+</style>
+  <div id="league-table">
+  Loading Premier League table...
+</div>
+
+<script>
+fetch("https://ayelotancaleb.github.io/caleb-football-hub/standings.json")
+  .then(data => {
+    const table = data.standings[0].table;
+
+    let html = `
+      <h2>Premier League Table</h2>
+      <table border="1" cellpadding="8">
+        <tr>
+          <th>Pos</th>
+          <th>Club</th>
+          <th>MP</th>
+          <th>Pts</th>
+        </tr>`;
+
+    table.forEach(team => {
+      html += `
+        <tr>
+          <td>${team.position}</td>
+          <td>${team.team.name}</td>
+          <td>${team.playedGames}</td>
+          <td>${team.points}</td>
+        </tr>`;
+    });
+
+    html += "</table>";
+    document.getElementById("league-table").innerHTML = html;
+  })
+  .catch(() => {
+    document.getElementById("league-table").innerText =
+      "Could not load table.";
+  });
+</script>
+</body>
+  <h2>Premier League Table</h2>
+<table border="1" width="100%">
+  <tr>
+    <th>Pos</th>
+    <th>Team</th>
+    <th>MP</th>
+    <th>Pts</th>
+  </tr>
+  <tr>
+    <td colspan="4">League table coming soon...</td>
+  </tr>
+</table>
+</html>
