@@ -1,0 +1,22 @@
+name: Update Premier League Table
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get standings
+        run: |
+          curl -H "X-Auth-Token: ${{ secrets.FOOTBALL_DATA_TOKEN }}" \
+          https://api.football-data.org/v4/competitions/PL/standings \
+          -o standings.json
+
+      - name: Save standings
+        uses: actions/upload-artifact@v4
+        with:
+          name: premier-league-table
+          path: standings.json
